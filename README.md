@@ -1,29 +1,17 @@
-// mobile_app/lib/models/enhancer_model.dart (Дополнение)
+# 🔩 aythena-piston-machining-tools: Расчет и Контроль Проточки Поршней
 
-// ... (существующие enum EnhancementType, AIProcessingStatus - остаются прежними) ...
+Этот репозиторий содержит архитектуру для высокоточной системы, предназначенной для инженеров и операторов ЧПУ, занимающихся проточкой поршней. Фокус — на точности расчетов, управлении допусками и учете теплового расширения.
 
-// Представление отдельного шага в истории редактирования
-class HistoryStep {
-  final String stepId;
-  final String description; // Например, "Применено шумоподавление AI 0.7"
-  final EnhancementConfig? config; // Конфигурация, которая была применена
-  final DateTime timestamp;
+## Архитектура
+* **Frontend:** Flutter/Dart (Input Forms, Visualizer, Real-Time Feedback)
+* **Backend:** Python/Flask Mock (Engineering Calculation Modules, G-Code Templates)
 
-  HistoryStep({required this.stepId, required this.description, this.config})
-      : timestamp = DateTime.now();
-}
+## 🔑 Ключевые принципы
+1.  **Precision First:** Все расчеты основаны на критических инженерных допусках и формулах.
+2.  **Thermal Compensation:** Автоматический учет поправок на температуру для обеспечения точности при работе в горячем двигателе.
+3.  **G-Code Generation:** Возможность генерации исполняемых фрагментов кода для станков.
+4.  **Visual Tolerance Check:** Визуализация допусков и текущих измерений.
 
-// Продвинутая модель задачи обработки (Job)
-class ProcessingJob {
-  final String jobId;
-  final String originalAssetId;
-  final List<HistoryStep> appliedSteps; // Ссылка на шаги, которые были применены
-  AIProcessingStatus status;
-  String? resultImageUrl;
-  String? errorMessage;
-  
-  ProcessingJob({
-    required this.jobId, required this.originalAssetId, required this.appliedSteps, 
-    this.status = AIProcessingStatus.pending, this.resultImageUrl, this.errorMessage
-  });
-}
+---
+
+## 📂 Структура проекта
