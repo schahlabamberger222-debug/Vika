@@ -1,48 +1,17 @@
-// mobile_app/lib/models/lunar_model.dart (Дополнение)
+# 🌾 aythena-vertical-farm-hub: Интеллектуальное Управление Вертикальной Фермой
 
-// ... (существующие enum LunarPhaseType, CraterFeature, AstrophotoPlan - остаются прежними) ...
+Этот репозиторий содержит архитектуру для мобильного и серверного управления полностью автоматизированной вертикальной фермой. Система фокусируется на точной агрономии, используя данные IoT и машинное обучение для оптимизации каждого цикла роста.
 
-// Данные о текущем положении Луны, включая Либрацию
-class EphemerisData {
-  // ... (предыдущие поля: datetime, phaseFraction, illuminatedPercent, altitudeDegrees, azimuthDegrees, distanceKm, colongitudeDegrees) ...
-  final double librationLat; // Либрация по широте (Libration in Latitude)
-  final double librationLon; // Либрация по долготе (Libration in Longitude)
-  
-  EphemerisData({
-    // ... (предыдущие обязательные поля) ...
-    required this.librationLat, required this.librationLon
-  });
-}
+## Архитектура
+* **Frontend:** Flutter/Dart (Riverpod, Real-Time Dashboards, Control Interface)
+* **Backend:** Python/Flask (MQTT/IoT Hub integration, Scikit-learn/PyTorch for ML Yield Prediction)
 
-// Условия наблюдения
-class ObservationConditions {
-  final double cloudCoverPercent; // Процент облачности (0-100)
-  final double seeingQualityArcsec; // Качество атмосферной прозрачности (Seeing, в угловых секундах)
-  final int bortleScale; // Шкала Бортля для светового загрязнения (1=идеально, 9=город)
+## 🔑 Ключевые принципы
+1.  **Recipe-Based Control:** Все условия (свет, питательные вещества) управляются по заданному "рецепту" для конкретного сорта.
+2.  **Predictive Maintenance:** Прогнозирование сбоев оборудования и отклонений в урожайности.
+3.  **Data Normalization:** Унификация данных из разнородных IoT-датчиков.
+4.  **Dynamic Optimization:** Адаптация условий на основе актуального прогноза роста.
 
-  ObservationConditions({
-    this.cloudCoverPercent = 0.0,
-    this.seeingQualityArcsec = 2.0, // 2.0" - среднее
-    this.bortleScale = 4,
-  });
-}
+---
 
-// Оборудование пользователя
-class TelescopeSetup {
-  final String model;
-  final double focalLengthMm; // Фокусное расстояние
-  final double apertureMm; // Апертура (диаметр)
-  
-  TelescopeSetup({
-    required this.model, required this.focalLengthMm, required this.apertureMm
-  });
-}
-
-// Расчет поля зрения для конкретного объектива/окуляра
-class FieldOfView {
-  final double magnification; // Увеличение (Zoom)
-  final double trueFieldOfViewDegrees; // Истинное поле зрения
-  final double exitPupilMm; // Выходной зрачок
-  
-  FieldOfView({required this.magnification, required this.trueFieldOfViewDegrees, required this.exitPupilMm});
-}
+## 📂 Структура проекта
